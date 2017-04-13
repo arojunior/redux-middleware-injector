@@ -19,28 +19,25 @@ const store = createStore(
 And then you can write your own middlewares like the example below:
 
 ```javascript
-export const getUser = username => ({
-    type    : 'MIDDLEWARE',
-    payload : store => {
+export const getUser = username => store => {
 
-        const {dispatch} = store
+    const {dispatch} = store
 
-        return next => action => {
+    return next => action => {
 
-            dispatch({ type : 'GITHUB_FETCHING' })
+        dispatch({ type : 'modules/Github/FETCHING' })
 
-            return axios.get(`https://api.github.com/users/${username}`)
-                    .then(res => {
-                        dispatch({
-                            type    : 'GITHUB_SUCCESS',
-                            payload : {
-                                user : res.data
-                            }
-                        })
+        return axios.get(`https://api.github.com/users/${username}`)
+                .then(res => {
+                    dispatch({
+                        type    : 'modules/Github/SUCCESS',
+                        payload : {
+                            data : res.data
+                        }
                     })
-        }
+                })
     }
-})
+}
 ```
 
 See [Redux documentation](http://redux.js.org/docs/advanced/Middleware.html) about Middlewares
