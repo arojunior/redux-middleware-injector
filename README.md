@@ -21,22 +21,22 @@ And then you can write your own middlewares like the example below:
 ```javascript
 export const getUser = username => store => {
 
-    const {dispatch} = store
+  const {dispatch} = store
 
-    return next => action => {
+  return next => action => {
 
-        dispatch({ type : 'modules/Github/FETCHING' })
+    dispatch({ type : 'modules/Github/FETCHING' })
 
-        return axios.get(`https://api.github.com/users/${username}`)
+    return axios.get(`https://api.github.com/users/${username}`)
                 .then(res => {
-                    dispatch({
-                        type    : 'modules/Github/SUCCESS',
-                        payload : {
-                            data : res.data
-                        }
-                    })
+                  dispatch({
+                    type    : 'modules/Github/SUCCESS',
+                    payload : {
+                      data : res.data
+                    }
+                  })
                 })
-    }
+  }
 }
 ```
 
