@@ -1,6 +1,6 @@
 {
   "name": "redux-middleware-injector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Middleware injector for Redux",
   "main": "lib/redux-middleware-injector.min.js",
   "scripts": {

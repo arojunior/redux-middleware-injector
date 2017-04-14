@@ -28,14 +28,14 @@ export const getUser = username => store => {
     dispatch({ type : 'modules/Github/FETCHING' })
 
     return axios.get(`https://api.github.com/users/${username}`)
-                .then(res => {
-                  dispatch({
-                    type    : 'modules/Github/SUCCESS',
-                    payload : {
-                      data : res.data
-                    }
-                  })
-                })
+            .then(res => {
+              dispatch({
+                type    : 'modules/Github/SUCCESS',
+                payload : {
+                  data : res.data
+                }
+              })
+            })
   }
 }
 ```
