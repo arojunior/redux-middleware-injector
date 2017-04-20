@@ -7,35 +7,28 @@ You don't need to import all the middlewares before create the store in applyMid
 Just import the injector:
 
 ```javascript
-import injectMiddleware from 'redux-middleware-injector'
+import injectMiddleware from "redux-middleware-injector"
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(
-    injectMiddleware
-  )
-)
+const store = createStore(rootReducer, applyMiddleware(injectMiddleware))
+
 ```
 And then you can write your own middlewares like the example below:
 
 ```javascript
 export const getUser = username => store => {
-
   const {dispatch} = store
 
   return next => action => {
+    dispatch({type: 'modules/Github/FETCHING'})
 
-    dispatch({ type : 'modules/Github/FETCHING' })
-
-    return axios.get(`https://api.github.com/users/${username}`)
-            .then(res => {
-              dispatch({
-                type    : 'modules/Github/SUCCESS',
-                payload : {
-                  data : res.data
-                }
-              })
-            })
+    return axios.get(`https://api.github.com/users/${username}`).then(res => {
+      dispatch({
+        type: 'modules/Github/SUCCESS',
+        payload: {
+          data: res.data
+        }
+      })
+    })
   }
 }
 ```

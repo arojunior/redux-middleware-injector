@@ -1,18 +1,18 @@
-var webpack = require('webpack');
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var path = require('path');
-var env = require('yargs').argv.mode;
+var webpack = require('webpack')
+var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
+var path = require('path')
+var env = require('yargs').argv.mode
 
-var libraryName = 'injectMiddleware';
-var fileName = 'redux-middleware-injector';
+var libraryName = 'injectMiddleware'
+var fileName = 'redux-middleware-injector'
 
-var plugins = [], outputFile;
+var plugins = [], outputFile
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
-  outputFile = fileName + '.min.js';
+  plugins.push(new UglifyJsPlugin({minimize: true}))
+  outputFile = fileName + '.min.js'
 } else {
-  outputFile = fileName + '.js';
+  outputFile = fileName + '.js'
 }
 
 var config = {
@@ -32,13 +32,13 @@ var config = {
         loader: 'babel',
         exclude: /(node_modules|bower_components)/
       }
-  ]
+    ]
   },
   resolve: {
     root: path.resolve('./src'),
     extensions: ['', '.js']
   },
   plugins: plugins
-};
+}
 
-module.exports = config;
+module.exports = config
