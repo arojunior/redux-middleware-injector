@@ -1,8 +1,10 @@
 # Redux Middleware Injector
 
+[![npm version](https://img.shields.io/npm/v/redux-middleware-injector.svg)](https://www.npmjs.com/package/redux-middleware-injector) [![npm downloads](https://img.shields.io/npm/dm/redux-middleware-injector.svg)](https://www.npmjs.com/package/redux-middleware-injector) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 The recomended place to execute actions with side-effects in Redux is in the Middlewares.
-With this lib you can write your own middleware wherever you want, like in the action creators file.
-You don't need to import all the middlewares before create the store in applyMiddleware.
+With this lib you can write your own middleware wherever you want, for example in the action creators file.
+You don't need to import all the middlewares with applyMiddleware before create the store.
 
 Just import the injector:
 
